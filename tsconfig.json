@@ -18,5 +18,5 @@
     "jsx": "react-jsx",
     "types": ["jest", "node"]
   },
-  "include": ["src", "./tsconfig.paths.json"]
+  "include": ["src", "tsconfig.paths.json"]
 }

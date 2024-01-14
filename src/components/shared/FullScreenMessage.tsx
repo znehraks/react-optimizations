@@ -7,7 +7,7 @@ interface FullScreenMessageProps {
   type: 'loading' | 'error'
 }
 
-export const FullScreenMessage = ({ type }: FullScreenMessageProps) => {
+function FullScreenMessage({ type }: FullScreenMessageProps) {
   return (
     <div className={cx('container')}>
       {type === 'loading' ? (
@@ -66,3 +66,5 @@ function Error() {
     </svg>
   )
 }
+
+export default FullScreenMessage
