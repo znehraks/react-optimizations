@@ -23,6 +23,7 @@ function ImageGallery({ images }: { images: string[] }) {
         <ul className={cx('wrap-images')}>
           {images.map((src, idx) => (
             <li
+              key={src}
               className={cx('wrap-image')}
               onClick={() => handleSelectedImage(idx)}
             >
