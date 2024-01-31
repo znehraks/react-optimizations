@@ -3,7 +3,7 @@ import { getWedding } from '@/api/wedding'
 import { Wedding } from '@/models/wedding'
 
 function useWedding() {
-  const { data, error } = useQuery<Wedding>(
+  const { data } = useQuery<Wedding>(
     ['wedding'],
     () =>
       getWedding().then((res) => {
@@ -15,7 +15,7 @@ function useWedding() {
     { suspense: true },
   )
 
-  return { wedding: data, error }
+  return { wedding: data }
 }
 
 export default useWedding

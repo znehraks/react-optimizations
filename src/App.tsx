@@ -2,7 +2,6 @@ import { useState } from 'react'
 
 import classNames from 'classnames/bind'
 import styles from './App.module.scss'
-import FullScreenMessage from '@shared/FullScreenMessage'
 import Heading from '@components/sections/Heading'
 import Video from '@components/sections/Video'
 import ImageGallery from './components/sections/ImageGallery'
@@ -17,12 +16,9 @@ import useWedding from './hooks/useWedding'
 
 const cx = classNames.bind(styles)
 function App() {
-  const { wedding, error } = useWedding()
+  const { wedding } = useWedding()
   const [count, setCount] = useState(0)
 
-  if (error) {
-    return <FullScreenMessage type="error" />
-  }
   if (!wedding) {
     return null
   }
