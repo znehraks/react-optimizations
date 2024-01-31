@@ -4,6 +4,7 @@ import 'swiper/css'
 import styles from './ImageViewer.module.scss'
 import './swiper.css'
 import Dimmed from '../shared/Dimmed'
+import generateImageUrl from '@/utils/generateImageUrls'
 
 const cx = classNames.bind(styles)
 
@@ -30,7 +31,22 @@ function ImageViewer({
       >
         {images.map((src) => (
           <SwiperSlide key={src}>
-            <img src={src} alt="이미지 슬라이드" />
+            <picture>
+              <source
+                srcSet={generateImageUrl({
+                  filename: src,
+                  format: 'webp',
+                })}
+                type="image/webp"
+              ></source>
+              <img
+                src={generateImageUrl({
+                  filename: src,
+                  format: 'jpg',
+                })}
+                alt="이미지슬라이드"
+              />
+            </picture>
           </SwiperSlide>
         ))}
       </Swiper>
