@@ -1,12 +1,13 @@
-const CracoAlias = require('react-app-alias')
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
 
 module.exports = {
   plugins: [
     {
-      plugin: CracoAlias,
-      options: {
-        source: 'tsconfig',
-        tsConfigPath: './tsconfig.paths.json',
+      plugin: {
+        overrideWebpackConfig: ({ webpackConfig }) => {
+          webpackConfig.resolve.plugins.push(new TsconfigPathsPlugin({}))
+          return webpackConfig
+        },
       },
     },
   ],
@@ -14,10 +15,7 @@ module.exports = {
     presets: [
       [
         '@babel/preset-react',
-        {
-          runtime: 'automatic',
-          importSource: '@emotion/react',
-        },
+        { runtime: 'automatic', importSource: '@emotion/react' },
       ],
     ],
     plugins: ['@emotion/babel-plugin'],
